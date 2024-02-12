@@ -19,3 +19,7 @@ label {
     height: auto;
     width: 20%;
 }
+
+article {
+    background-color: lightblue;
+}
