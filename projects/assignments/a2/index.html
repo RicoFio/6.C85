@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Vis & Society Assignment 2</title>
+    <link rel="stylesheet" href="./report.css"/>
+</head>
+
+<body>
+<header>
+    <h1>
+        <small>Assignment 2</small>
+        Exploratory Data Analysis
+    </h1>
+
+    <p>
+        <strong>Riccardo Fiorista</strong> - <a href="mailto:fiorista@mit.edu">fiorista@mit.edu</a>
+    </p>
+</header>
+<main>
+    <section>
+        <h2>Subtheme: Housing for The Rich</h2>
+
+        <h3>Introduction</h3>
+        <p>
+            We are experiencing a critical housing shortage globally, driven by the commodification of the real estate
+            market, the correlated increasing costs of living, and a shortage of affordable housing. Particularly in
+            Boston,
+            the situation is dire, <b>51%</b> of the population not being able to afford housing with 30% or less
+            of their income. As prices are soaring for both renting and acquiring properties, family formation is
+            decreasing, pushing both working- and middle-class individuals out of the City
+            <a href="#references">[1]</a>. These trends are exacerbated
+            by the increasing housing development supply targeting the high-income class with luxury condos
+            and apartments in convenient locations. These housing options, however, are mainly used as capital
+            investments
+            and are often uninhabited <a href="#references">[2]</a>. With the current market conditions and mounting
+            pressure, we present an
+            exploratory data analysis targeting identifying the trends and correlations mentioned above in data provided
+            by the public planning agency Metropolitan Area Planning Council (MAPC). We mainly focus on the evolution
+            of residential sales in the City of Boston, considering the period between 2000 and 2022.
+        </p>
+        <p>
+            Below, we present our analysis questions, which are spurred by the provided readings for the sub-theme
+            <em>Housing for the Rich</em>. The first question is spurred by reading <a href="#references">[2]</a>, the
+            <em>Homes For Profit</em> report indicates that the Boston housing market is making it increasingly
+            impossible for families to purchase single-family homes. The second and third questions are, in contrast,
+            mainly spurred by reading <a href="#references">[1]</a>, which indicates that downtown real estate is
+            increasingly used purely as a
+            commodity market or vacancy home. With prices in the double-digit millions, we investigate how ownership
+            has evolved and how speculation unfolds over time and space in the wider Boston area.
+        </p>
+        <h3>Overall Analysis Questions</h3>
+        <ol>
+            <li>Which properties have gained importance since the year 2000?
+                <ol>
+                    <li>How did the sales of different property types evolve?</li>
+                    <li>Does property age and size matter?</li>
+                </ol>
+            </li>
+
+            <li>How did ownership evolve in the greater Boston area?
+                <ol>
+                    <li>Do buyers of a certain type get less access to the market?</li>
+                    <li>Have investor-to-investor sales increased?</li>
+                    <li>Are buyers owners of the property they acquire?</li>
+                </ol>
+            </li>
+            <li>What is the spatial distribution of real estate investment and speculation?
+                <ol>
+                    <li>Where do we see the newest developments?</li>
+                    <li>Which area has the highest sales activity across the observed timeframe?</li>
+                    <li>How do sales between investors and non-investors behave over time?</li>
+                </ol>
+            </li>
+        </ol>
+
+        <h3>The Dataset</h3>
+        For the following analysis, we used the <em>Residential sales data in the City of Boston, 2000-2023</em>,
+        containing data until the end of 2022. We used the dataset on <em>Single family zoning vs
+        other housing zoning in Metro Boston</em> for the GIS component of our analysis. The residential sales data
+        includes 63 dimensions of both qualitative and quantitative nature. Here, we mostly work with the sales price
+        and the counts of transactions. In total, we consider 49,301 entries of sales transactions in the
+        greater Boston area.
+    </section>
+
+    <section>
+        <h2>Discoveries & Insights</h2>
+
+        <h3>1. Which properties have gained importance since the year 2000?</h3>
+
+        <figure>
+            <img src="./submission_graphics/Sale_Transaction_Prices_Per_Year.png" alt=""/>
+            <figcaption>
+                Distributions of sale prices grouped by year for all recorded transactions.
+                We infer the trend line (dotted red) from the progression over time,
+                indicating a stark increase in the average real estate sales prices (here on a logarithmic scale).
+                We note transaction prices of 1 USD from 2013 onwards (see annotation), likely indicating errors in the
+                data acquisition process. The overall maximum is the sale at 999M USD in 2021, which can be attributed
+                to the sale of the <a href="http://tinyurl.com/a2lcb24">Boston Landmark Center</a>
+                sold in 2022 for 1.63B USB, indicating that 999M USD is used as
+                a ceiling value in the sales dataset.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="./submission_graphics/Price_of_1$.png" alt=""/>
+            <figcaption>
+                A non-exhaustive list of price differences between flips of properties previously sold at 1 USD.
+                Price differences here are highly negative, indicating that these properties have previously been
+                traded at reflective market prices. Note the repeated property addresses, indicating patterns in
+                the erroneous recording of sales prices, which are potentially part of a domain-specific and
+                legitimate type of entry. For our analysis, we disregard all property sales below 10,000 USD, allowing
+                us to remove any outliers that we cannot attribute, reducing our available data from 49,301 to 49,083.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="./submission_graphics/Amount_of_Sales_by_Style.png" alt=""/>
+            <figcaption>
+                Number of sales by real estate style over time. The top five categories are Row-Middle, Mid-Rise,
+                High-Rise, Row-End, and Low-Rise, which, however, reduce in particular and overall sales volume over
+                time.
+                Condos and Free-Standing objects, while not in the top five, have gained sales volume in recent years.
+                All other
+                styles have relatively low market shares, with Colonial-styled buildings not being traded in some years.
+                Thus, we
+                group all categories but the last as style <i>other</i>.
+            </figcaption>
+        </figure>
+
+        <h3></h3>
+        <figure>
+            <img src="./submission_graphics/Distribution_of_Building_Built_Years.png" alt=""/>
+            <figcaption>
+                The above distribution of count of sales over year built indicates
+                an elevated number of buildings being built during the times of the Great Roman Empire and the birth of
+                Christ. Thus, for this dimension analysis, we disregard all values before 1780, which is the closest
+                lower bound to the more sensible distribution on the right. However, we do not disregard
+                this data in general, as these entries can still provide insightful information in other dimensions.
+            </figcaption>
+        </figure>
+
+        <figure id="s_built_year_and_style">
+            <img src="./submission_graphics/Nr._of_Sales_per_Building_Built_Year_and_Style.png" alt=""/>
+            <figcaption>
+                Discretizing the above count of sales transactions over building years by the building styles, we find
+                that the market between 2000 and 2022 has a strong preference for early 20th-century row houses as
+                found in the central area of Boston (see <a href="#spatial_three"><b>FIGURE NR</b></a> and
+                <a href="#spatial_four"><b>FIGURE NR</b></a> below). Furthermore, Boston has seen a notable
+                building boom around that time and during the late 90s and 2000s. In more recent times, Mid- and
+                High-rise buildings have been added to the Boston skyline, representing a significant part of the
+                total real estate volume traded.
+            </figcaption>
+        </figure>
+
+        <figure class="image-container">
+            <img src="./submission_graphics/Distribution_of_Interior_Area.png" alt=""/>
+            <img src="./submission_graphics/Distribution_of_Lot_Area.png" alt=""/>
+            <figcaption>
+                [Left] The distribution of interior area shows a stark skew towards zero, indicating that this metric of
+                sold objects has not been correctly recorded. Disregarding the zero-valued entries, we see a high
+                distribution of small interior areas, potentially indicating studios. Counts become more sparse as the
+                interior area increases, peaking at 1M square feet. [Right] Similar to the interior area,
+                the real estate lot area is also largely misrepresented, with most values at zero square feet.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="./submission_graphics/Median_Interior_vs_Lot_Area_Per_Year.png" alt=""/>
+            <figcaption>
+                Using the data with the above-mentioned price, year built, and interior/lot size filters, we observe
+                that the median living and building space increase. This clear trend indicates that units in the
+                Boston area increases in size and, accordingly, in price, favoring capital-intensive buyers over others.
+                We note that while the median interior area is larger than the lot area, they do not differ as wide
+                greatly as expected, reflecting the high transaction volume of townhouses identified in
+                <a href="#s_built_year_and_style">Figure 5</a> above.
+            </figcaption>
+        </figure>
+
+        <h3>2. How did ownership evolve in the greater Boston area?</h3>
+
+        <figure>
+            <img src="./submission_graphics/Purchases_by_Investor_Type_per_Year.png" alt=""/>
+            <figcaption>
+                The yearly sales transaction volume by investor type shows a clear prevalence of non-investors in the
+                market. Unexpectedly, we do not see a significant increase in investor purchases over time. However, we
+                can see overall negative trends (observing the dotted trend lines) in Non-count, Small, and Medium
+                Investors, indicating a shift in ownership.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="./submission_graphics/Sales_and_Median_Prices_by_Flip_Term_per_Year.png" alt=""/>
+            <figcaption>
+                In resonance with the above plot, we see that most sales are non-flip. Notably, however, the flip term
+                dimensions show clear data quality issues with missing values and a significant, unexpected
+                discontinuity in 2010. However, in the past decade, long-term flip horizons have shown a prevalence,
+                indicating that investors increasingly hold real estate, potentially without the intention to use it
+                as their primary residence or open it to the renting market.
+            </figcaption>
+        </figure>
+
+        <figure id="ownership_of_buyers">
+            <img src="./submission_graphics/Buyer_Ownership_Per_Year.png" alt=""/>
+            <figcaption>
+                Over time, buyers have increasingly become the owners of the real estate they acquire.
+                This can indicate scenarios where the property is being refinanced or where the owner is buying
+                an additional share of the property they already partially own. Thus, this plot shows most clearly
+                how the market has evolved to discriminate against buyers who are not already real estate owners,
+                making objects increasingly inaccessible to working- and middle-class families. However, the low
+                number of non-owner buyers in most recent years requires a follow-up with domain experts as this has
+                not been investigated by either of the readings <a href="#references">[1,2]</a>.
+            </figcaption>
+        </figure>
+
+        <figure id="cash_sales">
+            <img src="./submission_graphics/Cash_vs_Non-Cash_Sales_over_Time.png" alt=""/>
+            <figcaption>
+                Finally, we compare the progression of sales transactions and median annual property value
+                depending on whether the sale has been completed in cash. As suggested in
+                <a href="#references">[2]</a>, cash sales have
+                increased while mortgage and other financing options are at a continuous loss. In contrast, property
+                values of objects acquired in cash are consistently above those financed differently, further
+                indicating an inequality of access to the market for non-capital-intensive individuals.
+            </figcaption>
+        </figure>
+
+        <h3>Spatial Distribution of Real Estate Investment and Speculation?</h3>
+
+        <figure>
+            <img src="./submission_graphics/Spatial_Distribution_of_Sales_by_Year_2000_-_2022.png" alt=""/>
+            <figcaption>
+                We overlay the locations of all real estate traded in sales transactions (blue markers) over the
+                MAPC's area of influence (red polygons), i.e., the greater Boston area. The color gradient on the
+                markers
+                indicates the year of the transaction, with lighter transactions being more recent. Note the recent
+                expansion of sales transactions from central Boston into its suburbs and the lack of data in cities
+                outside central Boston. This spatial
+                representation of the data uncovers erroneous entries in the recorded locations. Points further
+                than 20 miles from the city center are often misplaced. Real estate seemingly in Rockport
+                (top right of the map) or in front of the coast of Africa (coordinates (0, 0)), controversially are
+                annotated with addresses in downtown Boston. While for the analysis above, these entries do not
+                represent a limitation. We disregard them for the following spatial analysis while maintaining
+                the previously applied filters on the sales price (>10,000 USD).
+            </figcaption>
+        </figure>
+
+        <figure id="spatial_two">
+            <img src="./submission_graphics/Location_and_Number_of_Sales_Transactions_per_Year_2000_-_2022.png" alt=""/>
+            <figcaption>
+                Geographic distribution of real estate sales transactions. A darker hue indicates higher activity,
+                mainly concentrated in downtown Boston. It seems that no data is available for the City of
+                Cambridge and Somerville are two highly affluent neighborhoods in the Boston area. The data shows
+                transactions in the previously Black, Indigenous, and People of Color (BIPOC) neighborhoods in South
+                Boston.
+            </figcaption>
+        </figure>
+
+        <figure id="spatial_three">
+            <img src="./submission_graphics/gif/Animation.gif" alt=""/>
+            <figcaption>
+                This animation illustrates the temporal progression of sales transactions, differencing between investor
+                (orange) and non-investor (orange) buyers, indicating the price through marker size. Note the smaller
+                per-unit prices in the early 2000s, as well as the spatial concentration in the inner districts of
+                Boston. As time progresses, sales prices increase with pattern-breaking lows in 2007-2009 during the
+                Great Recession. Row houses, indicated by relatively small and evenly distributed markers in the Alston
+                and Back Bay neighborhoods, have been constantly traded throughout the study period but shifted from
+                mainly non-investor-owned to a heterogeneous mixed ownership.
+            </figcaption>
+        </figure>
+
+        <figure id="spatial_four">
+            <img src="./submission_graphics/Spatial_Distribution_of_Sales_by_Year.png" alt=""/>
+            <figcaption>
+                This map reflects the sales transactions in the animation above but overlays the temporal progression
+                in the form of the marker hue. This overlay shows how prices have progressed, highlighting
+                key attractors to be sold at increasing prices. Furthermore, we can even more strongly identify the
+                preference for row houses in central Boston. Finally, as expected, capital-intensive objects are
+                spatially
+                concentrated in Downtown and the Seaport district.
+            </figcaption>
+        </figure>
+    </section>
+
+    <section>
+        <h2>Summary</h2>
+        <p>
+            In this analysis, we have explored the data on residential sales transactions kindly offered by MPAC. We
+            find that several data quality issues that we have addressed by applying filters on price, building interior
+            and lot sizes, year built, and geographic information, depending on the analysis made. We were able to
+            conclude with the following findings to our initial analysis questions:
+        </p>
+        <strong>Which properties have gained importance since the year 2000?</strong>
+        <p>
+            After our initial data cleaning, we found that row-house and mid-, high-, and low-rise buildings
+            dominate the market. Here, high-rise buildings have been in a renaissance since 2017. Furthermore, the data
+            shows
+            how early 20th-century row houses and Mid-Rise buildings present the main targets of the market. High-Rise
+            buildings, in contrast, are mostly built in the late 20th century. Furthermore, we find that the size of
+            these
+            houses does matter, with both interior living and lot areas steadily increasing since 2000.
+        </p>
+        <strong>How did ownership evolve in the greater Boston area?</strong>
+        <p>
+            Ownership is critical in both the real estate acquisition and rental markets. As suggested by
+            <a href="#references">[1]</a>, as ownership increasingly moves towards investors and capital-intensive
+            individuals, affordable housing stock enters extreme scarcity, putting high pressure on working- and middle-
+            class families. Our analysis shows that non-investor purchases are reducing while large and institutional
+            investors gain traction in the current market. Worsening the situation is the prevalent long-term horizon
+            of flips, reflecting the modification of real estate as a long-term investment. The most preoccupying aspect
+            of our analysis is the ownership status of buyers. In <a href="#ownership_of_buyers">Figure 10</a>, we see
+            how, over two decades, buyers of new property are owners of said property, indicating that
+            access to the market is increasingly granted to landlords rather than newcomers. Finally, this trend is
+            reflected also in <a href="#cash_sales">Figure 11</a>. Here, we show how non-cash purchases are slowly
+            becoming au-pair with cash purchases while the latter already dominate the market in terms of median annual
+            property value. Thus, those with capital can buy easily, often at a great discount, as suggested in
+            <a href="#references">[2]</a>.
+        </p>
+        <strong>What is the spatial distribution of real estate investment and speculation?</strong>
+        <p>
+            Ultimately, we explore the spatio-temporal component of our data. After disregarding data outside the
+            inner Boston area, we find that buyers are venturing into new neighborhoods, targeting exclusive suburbs as
+            suggested by <a href="#references">[2]</a>. Furthermore, we find that Row-Houses in Alston and Back Bay
+            have been in constant demand, even during the Great Recession. Investors and non-investors are increasingly
+            heterogeneously mixed, although the latter dominated the market in the early 2000s. Finally, we find
+            the greatest capital accumulation in the Boston Downtown and the Seaport neighborhood.
+        </p>
+    </section>
+    <section id="references">
+        <h2>References</h2>
+        <ol>
+            <li>
+                R. Ostriker et al., "Reckoning With Boston's Towers of Wealth," Boston Globe, 11/01/2023. [Online].
+                Available: <a href="http://tinyurl.com/hftra2r1">http://tinyurl.com/hftra2r1</a>.
+                [Accessed: February 18, 2024]
+            </li>
+            <li>
+                J. Guerrero et al., "Homes for Profit: Speculation and Investment in Greater Boston,"
+                Metropolitan Area Planning Council, 2023. [Online].
+                Available: <a href="http://tinyurl.com/hftra2r2">http://tinyurl.com/hftra2r2</a>.
+                [Accessed: February 18, 2024]
+            </li>
+        </ol>
+    </section>
+</main>
+</body>
+</html>
