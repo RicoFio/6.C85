@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Vis & Society Assignment 3</title>
+    <link rel="stylesheet" href="./report.css"/>
+</head>
+
+<body>
+<header>
+    <h1>
+        <small>Assignment 4</small>
+        Persuasive or Deceptive Visualization?
+    </h1>
+
+    <p>
+        <strong>Riccardo Fiorista</strong> - <a href="mailto:fiorista@mit.edu">fiorista@mit.edu</a>
+    </p>
+</header>
+
+<main>
+    <h2>Proposition: Northern America is A Main Contributor of Climate Change</h2>
+
+    <section>
+        <h3>In <strong>Favor</strong> of the Proposition</h3>
+
+        <figure>
+            <img src="./us_loses.png" alt="Northern America"/>
+            <figcaption>
+                <strong>Left:</strong> Northern America and Europe are the main contributors, per-capita, of GHG
+                equivalent CO2 emissions in metric tons. Over the past decade, Asia has been catching up to both
+                Europe and Northern America. The dotted line represents the cumulative global per-capita emission.
+                <strong>Right:</strong> Northern America has a highly elevated per-capita
+                average surface temperature increase compared to the rest of the world. It has been increasing,
+				and this trend will persist with the expansion of sealed surfaces and the continuation of urbanization
+				and deforestation. The green dotted line represents the global mean per-capita
+				average surface temperature increase.
+                <strong>Source: <a href="https://climatedata.imf.org/pages/access-data">IMF Climate
+                    Dashboard</a></strong>
+            </figcaption>
+        </figure>
+
+        <p>
+            Design Decisions and Rationale:
+        </p>
+
+        <ul>
+            <li>
+                In the left plot, which represents the per-capita GHG emissions in terms of CO2 equivalent metric
+				tons, we set Asia as a delimiter of what
+                can be considered "good" emissions through color-coding (targeting a Western audience). This is
+                purposeful and gives the reader the impression that any emission level above this developing
+                BRIC countries' are bad and are main contributors to this factor of climate change.
+                A true delimitation does not exist, since the global GHG emissions are significantly higher than what
+                would be naturally emitted through biochemical processes. The strategically placed legend gives a sense
+                of just how high the global per-capita GHG emissions are while contemporarily
+                warping the space between Europe, Northern America, and the worldwide emissions. Finally, we note
+                that in an unbiased visualization, we would have used the global mean instead of the cumulative
+                per-capita emissions (blue dotted line). However, in this case, the cumulative global emissions give
+				a nice upper-bound which is far away from other values, giving us some less convoluted visuals.
+				Finally, note the alarmingly red-colored area, which is meant to trigger a more affective reaction in
+                the viewer to gain a qualifying view on the contributors.
+            </li>
+            <li>
+                Surface temperatures per capita is not a widely considered factor. Due to land
+                properties and albedo, continents can have widely differing surface temperatures. However, the average
+                change in temperatures represents the deviation from historical values, and while considering them in
+                terms of per-capita is not a standard measure, it can inform us how anthropogenic changes to land
+                and vegetation, such as parking, urbanization, industry, and deforestation, are impacting
+                heat distributions. Similar to the plot below, I have removed comparability
+                by excluding other continents. Coloring then indicates how temperature increases in Northern America are
+				much more alarming than those seen on average. The choice of coloring the area below the dotted green line is
+				purposeful and again indicates the viewer a "healthy" baseline, which, however, is arbitrarily set by me.
+            </li>
+            <li>
+                In conjunction, these visualizations picture a negative image of Northern America, providing factual
+                blame on the continent's contribution to global climate change through both GHG emissions and
+                increases in average surface temperatures. Thus, using these visualizations, the audience can easily
+				take a stand in favor of the proposition, i.e., argue that Northern America <strong>is indeed</strong>
+				one of the main contributors to climate change.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3><strong>Opposed</strong> to the Proposition</h3>
+
+        <figure>
+            <img src="./us_wins.png" alt=""/>
+            <figcaption>
+                <strong>Left:</strong> Asia is globally, in absolute numbers, the main contributor of GHG
+                equivalent CO2 emissions in metric tons. Furthermore, its emissions have been increasing
+                significantly over the past two decades. The dotted line represents the cumulative global GHG emission
+                across all continents.
+                <strong>Right:</strong> Northern America has a lower-than-average surface temperature increase
+                compared to the rest of the world. The green dotted line represents the global mean of average
+                surface temperature increases.
+                <strong>Source: <a href="https://climatedata.imf.org/pages/access-data">IMF Climate
+                    Dashboard</a></strong>
+            </figcaption>
+        </figure>
+
+        <p>
+            Design Decisions and Rationale:
+        </p>
+
+        <ul>
+            <li>
+                The design elements used in these two plots are similar but inverted to the above in order to
+				counter the proposition. Instead of using per-capita normalization, I made use of absolute values.
+				As one of the smaller continents, Northern America has a smaller impact on the global GHG emission
+				balance. However, it
+				actually contributes equally to the global average surface temperature increase which would be evident
+				if the other continents would be displayed, and if we would remove the smoothing applied on the values
+				of Northern America as explained below.
+				.
+            </li>
+            <li>
+                In the left plot, we see the global CO2 equivalence of GHG emissions in metric tons, indicating that
+                Asia is the main contributor to worldwide GHG emissions. We introduce green and red
+                colored area, which, similar to the above, should give the audience a sense of
+                good and "admissible" emissions. However, instead of using the line described by Northern America
+                directly as a delimiter, we add a random offset to the boundary layer between the two areas
+                to further elude the sensation that the emissions of both Europe and Northern America are better than
+                a certain threshold.
+            </li>
+            <li>
+                In the right plot, the surface temperature increase for Northern America has been smoothed with a
+                10-year window rolling average to reduce variance and strengthen the illusion that
+                Northern America's average surface temperature change has remained below the average world's level.
+                Here, I have purposefully redacted other continents to limit comparability.
+                Furthermore, through coloring, the visualization signals to the reader that
+                Northern America represents the global minimum, with the rest of the world overshooting the green, i.e.
+                "good" area.
+            </li>
+            <li>
+                Concludingly, both visualizations picture a deceptive picture, allowing viewers to oppose the
+                proposition and believe that Northern America is not a main contributor to climate change.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Final Reflection</h2>
+        <p>
+            For the visualizations I have used the <a href="https://climatedata.imf.org/pages/access-data"><em>Quarterly
+            Greenhouse Gas (GHG) Air Emissions
+            Accounts</em></a> (2010-2023, published March 05, 2024) and <a
+                href="https://climatedata.imf.org/pages/access-data"><em>Annual Surface Temperature
+            Change</em></a> (1961-2022, published April 03, 2023) datasets published on the IMF Climate Change
+            Dashboard. Furthermore, I have used the World Bank's <a
+                href="https://data.worldbank.org/indicator/SP.POP.TOTL"><em>Population</em></a> (1961-2022, published
+            2022) dataset to
+            accomplish the per-capita transformations. The aggregation of these datasets is not straight
+            forward due to different naming and indexing conventions between the datasets. Moreover, some datasets
+			list indicators by country and others per continent. Thus, I have aggregated all per-country datasets by
+			continent and global numbers before creating the above visualizations.
+        </p>
+        <p>
+            I kept my visualizations simple and limited myself to a combination of line and area charts to enshrine
+            the trust and credibility the reader can build towards the visualizations. The high data-ink ratio and soberness
+            of the visualizations display a thorough understanding, a factual approach to the data, and allow for a
+			natural causal
+            reasoning with which the reader can argue for or against the proposition. I used smoothing and the
+            per-capita "trick" to build my opposing arguments.
+
+			On a global level, Northern America has a relatively small (but
+            notable) influence on factors such as GHG emissions and their contribution to surface heat (think parking,
+            sealed surfaces, urban dwellings, etc.). However, using per-capita considerations and a
+            non-comparative analysis of the surface temperatures, we can make the case that Northern America's
+            inhabitants are a major contributor to the climate change we are experiencing.
+        </p>
+        <p>
+            This exercise has truly shown me that visualizations, particularly the intent behind them, can make or
+            break an argument. Through obfuscation, styling, and omission, it is possible to build a
+            case with clear intent and persuade the reader to change their opinions.
+        </p>
+    </section>
+</main>
+
+</body>
+</html>
